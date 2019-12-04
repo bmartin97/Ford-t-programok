@@ -140,10 +140,19 @@ start_btn.addEventListener('click', function (evt) {
   var input = input_function[0];
   var output = input_function[1];
   var rules = input_function[2];
-  var index = getRuleCellIndex(input[0], output[0]);
+  var index = getRuleCellIndex(getNextChar(input), getNextChar(output));
   var rule = getRule(index);
+  console.log(rule);
 });
 console.log(getRule(getRuleCellIndex("+", "E'")));
+
+function getNextChar(text) {
+  if (text.length > 2 && text[1] === "'") {
+    return text[0] + text[1];
+  } else {
+    return text[0];
+  }
+}
 
 function getRuleCellIndex(x, y) {
   var x_headers = roles_table.querySelectorAll("thead > tr > th");
@@ -175,11 +184,17 @@ function getRuleCellIndex(x, y) {
 function getRule(_ref) {
   var x = _ref.x,
       y = _ref.y;
-  var rule = roles_table.querySelector("tbody tr:nth-child(".concat(y, ") > td:nth-child(").concat(x, ") input")).value.split(',');
-  return {
-    rule: rule[0].replace('(', ''),
-    rule_number: rule[1].replace(')', '')
-  };
+  var rule = roles_table.querySelector("tbody tr:nth-child(".concat(y, ") > td:nth-child(").concat(x, ") input")).value;
+
+  if (rule !== "") {
+    rule = rule.split(',');
+    return {
+      rule: rule[0].replace('(', ''),
+      rule_number: rule[1].replace(')', '')
+    };
+  } else {
+    throw "empty rule cell";
+  }
 }
 },{}],"../../../Users/tinzik/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -209,7 +224,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49182" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65212" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -16,11 +16,21 @@ start_btn.addEventListener('click', function(evt) {
     let output = input_function[1];
     let rules = input_function[2];
 
-    let index = getRuleCellIndex(input[0], output[0]);
+
+    let index = getRuleCellIndex(getNextChar(input), getNextChar(output));
     let rule = getRule(index);
+    console.log(rule);
 });
 
 console.log(getRule(getRuleCellIndex("+", "E'")));
+
+function getNextChar(text) {
+    if(text.length > 2 && text[1] === "'") {
+        return text[0] + text[1];
+    } else {
+        return text[0];
+    }
+}
 
 function getRuleCellIndex(x, y) {
     const x_headers = roles_table.querySelectorAll("thead > tr > th");
@@ -38,9 +48,15 @@ function getRuleCellIndex(x, y) {
 }
 
 function getRule({x, y}) {
-    const rule = roles_table.querySelector(`tbody tr:nth-child(${y}) > td:nth-child(${x}) input`).value.split(',');
-    return {
-        rule: rule[0].replace('(',''),
-        rule_number: rule[1].replace(')','')
+    let rule = roles_table.querySelector(`tbody tr:nth-child(${y}) > td:nth-child(${x}) input`).value;
+    if(rule !== "") {
+        rule = rule.split(',');
+        return {
+            rule: rule[0].replace('(',''),
+            rule_number: rule[1].replace(')','')
+        }
+    } else {
+        throw "empty rule cell"
     }
+    
 }
