@@ -1,0 +1,22 @@
+div.input {
+    margin: 20px auto;
+    text-align: center;
+}
+
+tbody tr:nth-child(odd) {
+    background: #f6f6f6;
+}
+
+tbody tr>td:first-child,
+thead tr>th:first-child {
+    background: #ddd;
+    border-right: 1px solid black;
+    width: 15px;
+}
+
+thead {
+    background: #ddd;
+    border-bottom: 1px solid black;
+}
+
+/*# sourceMappingURL=/main_style.9da1344c.css.map */
