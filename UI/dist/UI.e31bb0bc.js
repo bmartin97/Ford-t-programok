@@ -133,18 +133,39 @@ var roles_table = document.querySelector("#roles-table");
 var start_btn = document.querySelector("#start-btn");
 var display = document.querySelector("#display");
 var input_func = document.querySelector("#input-function");
+var delay = document.querySelector("#delay");
 var input, output, rules;
+
+function disableUserInteractions() {
+  var inputs = document.querySelectorAll("input");
+  var button = document.querySelector("button").disabled = true;
+  inputs.forEach(function (input) {
+    return input.disabled = true;
+  });
+}
+
+function enableUserInteractions() {
+  console.log("enable");
+  var inputs = document.querySelectorAll("input");
+  console.log(inputs);
+  document.querySelector("button").disabled = false;
+  inputs.forEach(function (input) {
+    return input.disabled = false;
+  });
+}
+
 start_btn.addEventListener('click', function (evt) {
-  display.innerHTML = "";
+  disableUserInteractions();
   var input_function = input_func.value;
+  display.innerHTML = "<div class=\"header\">".concat(input_function, "</div>");
   input_function = input_function.replace('(', '').replace(')', '');
   input_function = input_function.split(',');
   input = input_function[0];
   output = input_function[1];
   rules = input_function[2];
+  rules = rules.replace("ε", "");
   solverLoop();
 });
-start_btn.click();
 window.solverLoop = solverLoop;
 
 function solverLoop() {
@@ -159,6 +180,7 @@ function solverLoop() {
 
     case "elfogad":
       display.innerHTML += '<div class="success">✔ elfogad</div>';
+      enableUserInteractions();
       return;
 
     default:
@@ -173,7 +195,7 @@ function solverLoop() {
   }
 
   showOnDisplay(rule);
-  setTimeout(solverLoop, 200);
+  setTimeout(solverLoop, Number(delay.value));
 }
 
 function getNextChar(text) {
@@ -193,6 +215,7 @@ function getRuleCellIndex(x, y) {
 
   if (x_index === -1) {
     display.innerHTML += "<div class=\"warning\">\u26A0 invalid karakter: ".concat(x, "</div>");
+    enableUserInteractions();
     throw "not found x value";
   }
 
@@ -204,6 +227,7 @@ function getRuleCellIndex(x, y) {
 
   if (y_index === -1) {
     display.innerHTML += "<div class=\"warning\">\u26A0 invalid karakter: ".concat(y, "</div>");
+    enableUserInteractions();
     throw "not found y value";
   }
 
@@ -238,13 +262,14 @@ function getRule(_ref) {
     }
   } else {
     display.innerHTML += '<div class="wrong">✖ elutasít</div>';
+    enableUserInteractions();
     throw "empty rule cell";
   }
 }
 
 function showOnDisplay(rule) {
   var tempRule = rule !== "pop" ? "<span class=\"coral-highlight\">(".concat(rule.rule, ", ").concat(rule.rule_number, ")</span>") : "<span class=\"pop-highlight\">".concat(rule, "</span>");
-  display.innerHTML += "\n    <div class=\"row\">\n        <div class=\"rule\">\n            ".concat(tempRule, "\n        </div>\n        <div class=\"output\">\n            <div class=\"column\">\n                (\n            </div>\n            <div class=\"column\">\n                ").concat(input, ",\n            </div>\n            <div class=\"column\">\n                ").concat(output, ",\n            </div>\n            <div class=\"column\">\n                ").concat(rules, "\n            </div>\n            <div class=\"column\">\n                )\n            </div>\n        </div>\n    </div>\n    ");
+  display.insertAdjacentHTML('beforeend', "\n    <div class=\"row\">\n        <div class=\"rule\">\n            ".concat(tempRule, "\n        </div>\n        <div class=\"output\">\n            <div class=\"column\">\n                (\n            </div>\n            <div class=\"column\">\n                <span>").concat(input, ",</span>\n            </div>\n            <div class=\"column\">\n                ").concat(output, ",\n            </div>\n            <div class=\"column\">\n                ").concat(rules, "\n            </div>\n            <div class=\"column\">\n                )\n            </div>\n        </div>\n    </div>\n    "));
 }
 },{}],"../../../Users/tinzik/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -274,7 +299,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56413" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53999" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

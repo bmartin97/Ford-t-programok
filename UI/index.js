@@ -6,13 +6,30 @@ const roles_table = document.querySelector("#roles-table");
 const start_btn = document.querySelector("#start-btn");
 const display = document.querySelector("#display");
 const input_func = document.querySelector("#input-function");
+const delay = document.querySelector("#delay");
 
 let input, output, rules;
 
+function disableUserInteractions() {
+    const inputs = document.querySelectorAll("input");
+    const button = document.querySelector("button").disabled = true;
+    inputs.forEach(input => input.disabled = true);
+}
+
+function enableUserInteractions() {
+    console.log("enable");
+    const inputs = document.querySelectorAll("input");
+    console.log(inputs);
+    document.querySelector("button").disabled = false;
+    inputs.forEach(input => input.disabled = false);
+}
+
 
 start_btn.addEventListener('click', function(evt) {
-    display.innerHTML = "";
+    disableUserInteractions();
+
     let input_function = input_func.value;
+    display.innerHTML = `<div class="header">${input_function}</div>`;
         
     input_function = input_function.replace('(','').replace(')','');
     input_function = input_function.split(',');
@@ -20,16 +37,15 @@ start_btn.addEventListener('click', function(evt) {
     input = input_function[0];
     output = input_function[1];
     rules = input_function[2];
-    
+
+    rules = rules.replace("ε", "");
     
     solverLoop();    
 });
 
-start_btn.click();
 window.solverLoop = solverLoop;
 
 function solverLoop() {
-
     let index = getRuleCellIndex(getNextChar(input), getNextChar(output));
     let rule = getRule(index);
     
@@ -39,7 +55,8 @@ function solverLoop() {
             output = output.substr(getNextChar(output).length);
             break;
         case "elfogad":
-            display.innerHTML += '<div class="success">✔ elfogad</div>'
+            display.innerHTML += '<div class="success">✔ elfogad</div>';
+            enableUserInteractions();
             return;
     
         default:
@@ -51,7 +68,7 @@ function solverLoop() {
             break;
     }
     showOnDisplay(rule);
-    setTimeout(solverLoop, 200);
+    setTimeout(solverLoop, Number(delay.value));
 }
 
 function getNextChar(text) {
@@ -66,14 +83,16 @@ function getRuleCellIndex(x, y) {
     const x_headers = roles_table.querySelectorAll("thead > tr > th");
     const x_index = [...x_headers].findIndex(head => head.innerHTML === x);
     if(x_index === -1) {
-        display.innerHTML += `<div class="warning">⚠ invalid karakter: ${x}</div>`
+        display.innerHTML += `<div class="warning">⚠ invalid karakter: ${x}</div>`;
+        enableUserInteractions();
 
         throw "not found x value";
     }
     const y_headers = roles_table.querySelectorAll("tbody > tr > td:first-child");
     const y_index = [...y_headers].findIndex(head => head.innerHTML === y);
     if(y_index === -1) {
-        display.innerHTML += `<div class="warning">⚠ invalid karakter: ${y}</div>`
+        display.innerHTML += `<div class="warning">⚠ invalid karakter: ${y}</div>`;
+        enableUserInteractions();
         throw "not found y value";
     }
 
@@ -102,14 +121,15 @@ function getRule({x, y}) {
             return rule;
         }
     } else {
-        display.innerHTML += '<div class="wrong">✖ elutasít</div>'
+        display.innerHTML += '<div class="wrong">✖ elutasít</div>';
+        enableUserInteractions();
         throw "empty rule cell"
     }
 }
 
 function showOnDisplay(rule) {
     const tempRule = rule !== "pop" ? `<span class="coral-highlight">(${rule.rule}, ${rule.rule_number})</span>` : `<span class="pop-highlight">${rule}</span>`;
-    display.innerHTML += `
+    display.insertAdjacentHTML('beforeend', `
     <div class="row">
         <div class="rule">
             ${tempRule}
@@ -119,7 +139,7 @@ function showOnDisplay(rule) {
                 (
             </div>
             <div class="column">
-                ${input},
+                <span>${input},</span>
             </div>
             <div class="column">
                 ${output},
@@ -132,5 +152,5 @@ function showOnDisplay(rule) {
             </div>
         </div>
     </div>
-    `;
+    `);
 }

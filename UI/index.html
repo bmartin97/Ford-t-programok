@@ -12,130 +12,141 @@
 </head>
 
 <body>
-    <div class="input">
-        <label>input</label>
-        <input type="text" value="(i+i*i#,E#,ε)" id="input-function">
-        <button class="pure-button" id="start-btn">START</button>
-    </div>
-    <div class="table">
-        <table class="pure-table pure-table-bordered" id="roles-table">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>+</th>
-                    <th>*</th>
-                    <th>(</th>
-                    <th>)</th>
-                    <th>i</th>
-                    <th>#</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>E</td>
-                    <td><input type="text" value=""></td>
-                    <td><input type="text" value=""></td>
-                    <td><input type="text" value="(TE',1)"></td>
-                    <td><input type="text" value=""></td>
-                    <td><input type="text" value="(TE',1)"></td>
-                    <td><input type="text" value=""></td>
-                </tr>
-                <tr>
-                    <td>E'</td>
-                    <td><input type="text" value="(+TE',2)"></td>
-                    <td><input type="text" value=""></td>
-                    <td><input type="text" value=""></td>
-                    <td><input type="text" value="(ε,3)"></td>
-                    <td><input type="text" value=""></td>
-                    <td><input type="text" value="(ε,3)"></td>
-                </tr>
-                <tr>
-                    <td>T</td>
-                    <td><input type="text" value=""></td>
-                    <td><input type="text" value=""></td>
-                    <td><input type="text" value="(FT',4)"></td>
-                    <td><input type="text" value=""></td>
-                    <td><input type="text" value="(FT',4)"></td>
-                    <td><input type="text" value=""></td>
-                </tr>
-                <tr>
-                    <td>T'</td>
-                    <td><input type="text" value="(ε,6)"></td>
-                    <td><input type="text" value="(*FT',5)"></td>
-                    <td><input type="text" value=""></td>
-                    <td><input type="text" value="(ε,6)"></td>
-                    <td><input type="text" value=""></td>
-                    <td><input type="text" value="(ε,6)"></td>
-                </tr>
-                <tr>
-                    <td>F</td>
-                    <td><input type="text" value=""></td>
-                    <td><input type="text" value=""></td>
-                    <td><input type="text" value="((E),7)"></td>
-                    <td><input type="text" value=""></td>
-                    <td><input type="text" value="(i,8)"></td>
-                    <td><input type="text" value=""></td>
-                </tr>
-                <tr>
-                        <td>+</td>
-                        <td><input type="text" value="pop"></td>
+    <main class="layout-container">
+        <div class="inputs">
+            <div class="column">
+                <label>input:</label>
+                <input type="text" value="(i+i*i#,E#,ε)" id="input-function">
+            </div>
+            <div class="column">
+                <label>delay</label>
+                <input type="number" value="300" min="0" max="4000" id="delay">
+            </div>
+            <div class="column">
+                <button class="pure-button" id="start-btn">START</button>
+            </div>
+            
+        </div>
+        <div class="table">
+            <table class="pure-table pure-table-bordered" id="roles-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>+</th>
+                        <th>*</th>
+                        <th>(</th>
+                        <th>)</th>
+                        <th>i</th>
+                        <th>#</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>E</td>
                         <td><input type="text" value=""></td>
                         <td><input type="text" value=""></td>
+                        <td><input type="text" value="(TE',1)"></td>
                         <td><input type="text" value=""></td>
-                        <td><input type="text" value=""></td>
+                        <td><input type="text" value="(TE',1)"></td>
                         <td><input type="text" value=""></td>
                     </tr>
                     <tr>
-                        <td>*</td>
-                        <td><input type="text" value=""></td>
-                        <td><input type="text" value="pop"></td>
-                        <td><input type="text" value=""></td>
+                        <td>E'</td>
+                        <td><input type="text" value="(+TE',2)"></td>
                         <td><input type="text" value=""></td>
                         <td><input type="text" value=""></td>
+                        <td><input type="text" value="(ε,3)"></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value="(ε,3)"></td>
+                    </tr>
+                    <tr>
+                        <td>T</td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value="(FT',4)"></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value="(FT',4)"></td>
                         <td><input type="text" value=""></td>
                     </tr>
                     <tr>
-                        <td>(</td>
+                        <td>T'</td>
+                        <td><input type="text" value="(ε,6)"></td>
+                        <td><input type="text" value="(*FT',5)"></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value="(ε,6)"></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value="(ε,6)"></td>
+                    </tr>
+                    <tr>
+                        <td>F</td>
                         <td><input type="text" value=""></td>
                         <td><input type="text" value=""></td>
-                        <td><input type="text" value="pop"></td>
+                        <td><input type="text" value="((E),7)"></td>
                         <td><input type="text" value=""></td>
-                        <td><input type="text" value=""></td>
+                        <td><input type="text" value="(i,8)"></td>
                         <td><input type="text" value=""></td>
                     </tr>
                     <tr>
-                        <td>)</td>
-                        <td><input type="text" value=""></td>
-                        <td><input type="text" value=""></td>
-                        <td><input type="text" value=""></td>
-                        <td><input type="text" value="pop"></td>
-                        <td><input type="text" value=""></td>
-                        <td><input type="text" value=""></td>
-                    </tr>
-                    <tr>
-                        <td>i</td>
-                        <td><input type="text" value=""></td>
-                        <td><input type="text" value=""></td>
-                        <td><input type="text" value=""></td>
-                        <td><input type="text" value=""></td>
-                        <td><input type="text" value="pop"></td>
-                        <td><input type="text" value=""></td>
-                    </tr>
-                    <tr>
-                        <td>#</td>
-                        <td><input type="text" value=""></td>
-                        <td><input type="text" value=""></td>
-                        <td><input type="text" value=""></td>
-                        <td><input type="text" value=""></td>
-                        <td><input type="text" value=""></td>
-                        <td><input type="text" value="elfogad"></td>
-                    </tr>
-            </tbody>
-        </table>
-    </div>
-    <div id="display">
-
-    </div>
+                            <td>+</td>
+                            <td><input type="text" value="pop"></td>
+                            <td><input type="text" value=""></td>
+                            <td><input type="text" value=""></td>
+                            <td><input type="text" value=""></td>
+                            <td><input type="text" value=""></td>
+                            <td><input type="text" value=""></td>
+                        </tr>
+                        <tr>
+                            <td>*</td>
+                            <td><input type="text" value=""></td>
+                            <td><input type="text" value="pop"></td>
+                            <td><input type="text" value=""></td>
+                            <td><input type="text" value=""></td>
+                            <td><input type="text" value=""></td>
+                            <td><input type="text" value=""></td>
+                        </tr>
+                        <tr>
+                            <td>(</td>
+                            <td><input type="text" value=""></td>
+                            <td><input type="text" value=""></td>
+                            <td><input type="text" value="pop"></td>
+                            <td><input type="text" value=""></td>
+                            <td><input type="text" value=""></td>
+                            <td><input type="text" value=""></td>
+                        </tr>
+                        <tr>
+                            <td>)</td>
+                            <td><input type="text" value=""></td>
+                            <td><input type="text" value=""></td>
+                            <td><input type="text" value=""></td>
+                            <td><input type="text" value="pop"></td>
+                            <td><input type="text" value=""></td>
+                            <td><input type="text" value=""></td>
+                        </tr>
+                        <tr>
+                            <td>i</td>
+                            <td><input type="text" value=""></td>
+                            <td><input type="text" value=""></td>
+                            <td><input type="text" value=""></td>
+                            <td><input type="text" value=""></td>
+                            <td><input type="text" value="pop"></td>
+                            <td><input type="text" value=""></td>
+                        </tr>
+                        <tr>
+                            <td>#</td>
+                            <td><input type="text" value=""></td>
+                            <td><input type="text" value=""></td>
+                            <td><input type="text" value=""></td>
+                            <td><input type="text" value=""></td>
+                            <td><input type="text" value=""></td>
+                            <td><input type="text" value="elfogad"></td>
+                        </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="display">
+    
+        </div>
+    </main>
     <script src="./index.js"></script>
 </body>
 </html>
