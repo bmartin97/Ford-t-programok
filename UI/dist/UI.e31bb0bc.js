@@ -145,17 +145,15 @@ function disableUserInteractions() {
 }
 
 function enableUserInteractions() {
-  console.log("enable");
   var inputs = document.querySelectorAll("input");
-  console.log(inputs);
   document.querySelector("button").disabled = false;
   inputs.forEach(function (input) {
     return input.disabled = false;
   });
 }
 
-start_btn.addEventListener('click', function (evt) {
-  disableUserInteractions();
+function init() {
+  console.log("save");
   var input_function = input_func.value;
   display.innerHTML = "<div class=\"header\">".concat(input_function, "</div>");
   input_function = input_function.replace('(', '').replace(')', '');
@@ -164,6 +162,11 @@ start_btn.addEventListener('click', function (evt) {
   output = input_function[1];
   rules = input_function[2];
   rules = rules.replace("ε", "");
+}
+
+start_btn.addEventListener('click', function (evt) {
+  disableUserInteractions();
+  init();
   solverLoop();
 });
 window.solverLoop = solverLoop;
@@ -299,7 +302,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56171" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56847" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

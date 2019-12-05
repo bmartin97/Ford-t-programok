@@ -17,20 +17,16 @@ function disableUserInteractions() {
 }
 
 function enableUserInteractions() {
-    console.log("enable");
     const inputs = document.querySelectorAll("input");
-    console.log(inputs);
     document.querySelector("button").disabled = false;
     inputs.forEach(input => input.disabled = false);
 }
 
-
-start_btn.addEventListener('click', function(evt) {
-    disableUserInteractions();
-
+function init() {
+    console.log("save");
     let input_function = input_func.value;
     display.innerHTML = `<div class="header">${input_function}</div>`;
-        
+  
     input_function = input_function.replace('(','').replace(')','');
     input_function = input_function.split(',');
     
@@ -39,7 +35,13 @@ start_btn.addEventListener('click', function(evt) {
     rules = input_function[2];
 
     rules = rules.replace("ε", "");
+}
+
+start_btn.addEventListener('click', function(evt) {
+    disableUserInteractions();
     
+    init();
+
     solverLoop();    
 });
 
