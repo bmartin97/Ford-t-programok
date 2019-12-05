@@ -3,6 +3,10 @@ div.input {
     text-align: center;
 }
 
+#roles-table {
+    width: 100%;
+}
+
 tbody tr:nth-child(odd) {
     background: #f6f6f6;
 }
@@ -17,6 +21,81 @@ thead tr>th:first-child {
 thead {
     background: #ddd;
     border-bottom: 1px solid black;
+}
+
+#display {
+    padding: 20px;
+    background: #f5f5f5;
+    width: 50%;
+    margin: 20px auto;
+}
+
+#display .row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin: 10px 0;
+}
+
+#display .row .rule {
+    width: 30%;
+}
+#display .row .output {
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+#display .row .output > .column {
+    width: 30%;
+}
+#display .row .output > .column:first-child,
+#display .row .output > .column:last-child {
+    width: 20%
+}
+
+.use {
+    outline: 3px solid lightcoral;
+}
+
+.coral-highlight {
+    background: lightcoral;
+    color: white;
+    padding: 2px;
+}
+
+.pop-highlight {
+    background: lightskyblue;
+    color: white;
+    padding: 2px;
+}
+
+.success {
+    text-align: center;
+    font-size: 22px;
+    background: greenyellow;
+    font-weight: bold;
+    color: #444;
+    padding: 10px 0;
+}
+
+.wrong {
+    text-align: center;
+    font-size: 22px;
+    background: red;
+    font-weight: bold;
+    color: white;
+    padding: 10px 0;
+}
+
+.warning {
+    text-align: center;
+    font-size: 22px;
+    background: orange;
+    font-weight: bold;
+    color: white;
+    padding: 10px 0;
 }
 
 /*# sourceMappingURL=/main_style.9da1344c.css.map */

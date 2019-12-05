@@ -131,11 +131,12 @@ var state = {
 };
 var roles_table = document.querySelector("#roles-table");
 var start_btn = document.querySelector("#start-btn");
+var display = document.querySelector("#display");
 var input_func = document.querySelector("#input-function");
 var input, output, rules;
 start_btn.addEventListener('click', function (evt) {
+  display.innerHTML = "";
   var input_function = input_func.value;
-  console.log(input_function);
   input_function = input_function.replace('(', '').replace(')', '');
   input_function = input_function.split(',');
   input = input_function[0];
@@ -143,12 +144,12 @@ start_btn.addEventListener('click', function (evt) {
   rules = input_function[2];
   solverLoop();
 });
+start_btn.click();
 window.solverLoop = solverLoop;
 
 function solverLoop() {
   var index = getRuleCellIndex(getNextChar(input), getNextChar(output));
   var rule = getRule(index);
-  console.log(rule);
 
   switch (rule) {
     case "pop":
@@ -156,12 +157,11 @@ function solverLoop() {
       output = output.substr(getNextChar(output).length);
       break;
 
-    case "ε":
     case "elfogad":
+      display.innerHTML += '<div class="success">✔ elfogad</div>';
       return;
 
     default:
-      console.log(rule.rule + "," + rule.rule_number);
       output = output.substr(getNextChar(output).length);
 
       if (rule.rule !== "ε") {
@@ -172,8 +172,8 @@ function solverLoop() {
       break;
   }
 
-  console.log("".concat(input, ", ").concat(output, ", ").concat(rules));
-  solverLoop();
+  showOnDisplay(rule);
+  setTimeout(solverLoop, 200);
 }
 
 function getNextChar(text) {
@@ -192,6 +192,7 @@ function getRuleCellIndex(x, y) {
   });
 
   if (x_index === -1) {
+    display.innerHTML += "<div class=\"warning\">\u26A0 invalid karakter: ".concat(x, "</div>");
     throw "not found x value";
   }
 
@@ -202,6 +203,7 @@ function getRuleCellIndex(x, y) {
   });
 
   if (y_index === -1) {
+    display.innerHTML += "<div class=\"warning\">\u26A0 invalid karakter: ".concat(y, "</div>");
     throw "not found y value";
   }
 
@@ -214,7 +216,15 @@ function getRuleCellIndex(x, y) {
 function getRule(_ref) {
   var x = _ref.x,
       y = _ref.y;
-  var rule = roles_table.querySelector("tbody tr:nth-child(".concat(y, ") > td:nth-child(").concat(x, ") input")).value;
+  var rule = roles_table.querySelector("tbody tr:nth-child(".concat(y, ") > td:nth-child(").concat(x, ")"));
+  var previusUsedCell = roles_table.querySelector(".use");
+
+  if (previusUsedCell) {
+    previusUsedCell.classList.remove("use");
+  }
+
+  rule.classList.add("use");
+  rule = rule.querySelector("input").value;
 
   if (rule !== "") {
     if (rule !== "pop" && rule !== "elfogad") {
@@ -227,8 +237,14 @@ function getRule(_ref) {
       return rule;
     }
   } else {
+    display.innerHTML += '<div class="wrong">✖ elutasít</div>';
     throw "empty rule cell";
   }
+}
+
+function showOnDisplay(rule) {
+  var tempRule = rule !== "pop" ? "<span class=\"coral-highlight\">(".concat(rule.rule, ", ").concat(rule.rule_number, ")</span>") : "<span class=\"pop-highlight\">".concat(rule, "</span>");
+  display.innerHTML += "\n    <div class=\"row\">\n        <div class=\"rule\">\n            ".concat(tempRule, "\n        </div>\n        <div class=\"output\">\n            <div class=\"column\">\n                (\n            </div>\n            <div class=\"column\">\n                ").concat(input, ",\n            </div>\n            <div class=\"column\">\n                ").concat(output, ",\n            </div>\n            <div class=\"column\">\n                ").concat(rules, "\n            </div>\n            <div class=\"column\">\n                )\n            </div>\n        </div>\n    </div>\n    ");
 }
 },{}],"../../../Users/tinzik/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -258,7 +274,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50972" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56413" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
