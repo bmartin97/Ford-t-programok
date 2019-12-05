@@ -132,19 +132,49 @@ var state = {
 var roles_table = document.querySelector("#roles-table");
 var start_btn = document.querySelector("#start-btn");
 var input_func = document.querySelector("#input-function");
+var input, output, rules;
 start_btn.addEventListener('click', function (evt) {
   var input_function = input_func.value;
+  console.log(input_function);
   input_function = input_function.replace('(', '').replace(')', '');
   input_function = input_function.split(',');
-  console.log(input_function);
-  var input = input_function[0];
-  var output = input_function[1];
-  var rules = input_function[2];
+  input = input_function[0];
+  output = input_function[1];
+  rules = input_function[2];
+  solverLoop();
+});
+window.solverLoop = solverLoop;
+
+function solverLoop() {
   var index = getRuleCellIndex(getNextChar(input), getNextChar(output));
   var rule = getRule(index);
   console.log(rule);
-});
-console.log(getRule(getRuleCellIndex("+", "E'")));
+
+  switch (rule) {
+    case "pop":
+      input = input.substr(getNextChar(input).length);
+      output = output.substr(getNextChar(output).length);
+      break;
+
+    case "ε":
+    case "elfogad":
+      return;
+
+    default:
+      console.log(rule.rule + "," + rule.rule_number);
+      output = output.substr(getNextChar(output).length);
+
+      if (rule.rule !== "ε") {
+        output = rule.rule + output;
+      }
+
+      rules = rules + rule.rule_number;
+      break;
+  }
+
+  console.log("".concat(input, ", ").concat(output, ", ").concat(rules));
+  solverLoop();
+}
 
 function getNextChar(text) {
   if (text.length > 2 && text[1] === "'") {
@@ -187,11 +217,15 @@ function getRule(_ref) {
   var rule = roles_table.querySelector("tbody tr:nth-child(".concat(y, ") > td:nth-child(").concat(x, ") input")).value;
 
   if (rule !== "") {
-    rule = rule.split(',');
-    return {
-      rule: rule[0].replace('(', ''),
-      rule_number: rule[1].replace(')', '')
-    };
+    if (rule !== "pop" && rule !== "elfogad") {
+      rule = rule.split(',');
+      return {
+        rule: rule[0].replace('(', ''),
+        rule_number: rule[1].replace(')', '')
+      };
+    } else {
+      return rule;
+    }
   } else {
     throw "empty rule cell";
   }
@@ -224,7 +258,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65212" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50972" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
