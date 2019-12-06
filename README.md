@@ -22,11 +22,13 @@ Lassabb futásnál jobban látható a megoldás menete.
 Böngészőben:
 
 ```
-UI/index.html megnyítása egy modern böngészővel.
+UI/index.html megnyítása.
 ```
+vagy az alábbi linken: [http://bmartin97.info/Forditoprogramok/](http://bmartin97.info/Forditoprogramok/)
 
 Parcel bundler:
-Szükséges:
+
+Dependency:
 * https://nodejs.org/en/](https://nodejs.org/en/)
 * npm
 
@@ -41,7 +43,7 @@ parcel index.html
 ```
 parancs futtatása után a [http://localhost:1234](http://localhost:1234) címen érhető el az app.
 
-### Demo
+### Live Demo
 [http://bmartin97.info/Forditoprogramok/](http://bmartin97.info/Forditoprogramok/)
 
 ### Bemutató videó
