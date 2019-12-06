@@ -19,14 +19,14 @@ Lassabb futásnál jobban látható a megoldás menete.
 * JavaScript
 
 ### Futtatás:
-Böngészőben:
+**Böngészőben:**
 
 ```
 UI/index.html megnyítása.
 ```
 vagy az alábbi linken: [http://bmartin97.info/Forditoprogramok/](http://bmartin97.info/Forditoprogramok/)
 
-Parcel bundler:
+**Parcel bundler:**
 
 Dependency:
 * https://nodejs.org/en/](https://nodejs.org/en/)
