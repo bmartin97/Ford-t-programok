@@ -15,7 +15,7 @@ Táblázatos elemzés, módosítható inputtal, és táblázattal.
 [http://bmartin97.info/Forditoprogramok/](http://bmartin97.info/Forditoprogramok/)
 
 ### Bemutató videó
-[![Táblázatos tesztelő](http://bmartin97.info/tablazatosteszt.PNG](https://www.youtube.com/watch?v=k2Gpd5p9Qsc)
+[![Táblázatos tesztelő](http://bmartin97.info/tablazatosteszt.PNG)](https://www.youtube.com/watch?v=k2Gpd5p9Qsc)
 
 ## Console Project
 
