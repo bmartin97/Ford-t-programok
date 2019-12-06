@@ -274,7 +274,7 @@ function showOnDisplay(rule) {
   var tempRule = rule !== "pop" ? "<span class=\"coral-highlight\">(".concat(rule.rule, ", ").concat(rule.rule_number, ")</span>") : "<span class=\"pop-highlight\">".concat(rule, "</span>");
   display.insertAdjacentHTML('beforeend', "\n    <div class=\"row\">\n        <div class=\"rule\">\n            ".concat(tempRule, "\n        </div>\n        <div class=\"output\">\n            <div class=\"column\">\n                (\n            </div>\n            <div class=\"column\">\n                <span>").concat(input, ",</span>\n            </div>\n            <div class=\"column\">\n                ").concat(output, ",\n            </div>\n            <div class=\"column\">\n                ").concat(rules, "\n            </div>\n            <div class=\"column\">\n                )\n            </div>\n        </div>\n    </div>\n    "));
 }
-},{}],"../../Users/tinzik/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{}],"../../../Users/tinzik/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -302,7 +302,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56847" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59375" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -478,5 +478,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../Users/tinzik/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
+},{}]},{},["../../../Users/tinzik/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
 //# sourceMappingURL=/UI.e31bb0bc.js.map
