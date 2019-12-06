@@ -7,6 +7,7 @@ const recursiveWay = {
         this.errors = [];
         this.i = 0;
         this.input = input;
+        this.valid = true;
         this.E();
         this.Accept('#');
     },
@@ -15,7 +16,7 @@ const recursiveWay = {
             this.i++;
         }
         else {
-            this.errors.push(`🔴 Error at line ${this.i}. Character: ${this.input[this.i]}`);
+            this.errors.push(`🔴 Error at char ${this.i}. Character: ${this.input[this.i]}`);
             this.valid = false;
         }
     },
@@ -59,5 +60,5 @@ const recursiveWay = {
 recursiveWay.S("i+i*i+i*i+i#");
 console.log(recursiveWay.Result);
 
-recursiveWay.S("i++i#");
+recursiveWay.S("i)+i#");
 console.log(recursiveWay.Result);
