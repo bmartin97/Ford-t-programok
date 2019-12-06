@@ -7,6 +7,7 @@ Egyetemi beadandó projekt Fordító programok tárgy gyakorlati kurzusára. (EK
 Táblázatos elemző, módosítható inputtal, és táblázattal.
 
 > Input: Elemezendő bemeneti szöveg.
+
 > Delay: Elemzési parancsok közti késleltetés. Nagyobb delay = lassabb futás.
 
 A táblázatban a program mindig highlight-olja azt a behelyettesítési szabályt, amit épp használ.
