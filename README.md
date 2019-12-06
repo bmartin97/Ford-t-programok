@@ -33,7 +33,9 @@ parancs futtatása után a [http://localhost:1234](http://localhost:1234) címen
 [http://bmartin97.info/Forditoprogramok/](http://bmartin97.info/Forditoprogramok/)
 
 ### Bemutató videó
+
 [![Táblázatos elemző](http://bmartin97.info/tablazatosteszt.PNG)](https://www.youtube.com/watch?v=k2Gpd5p9Qsc)
+=======
 
 ## Console Project
 
@@ -41,6 +43,7 @@ Rekurzív elemző konzolos alkalmazás.
 
 ### Használt technológiák:
 * NodeJS
+<<<<<<< HEAD
 
 ### Futtatás:
 Futtatáshoz szükséges a legfrissebb [https://nodejs.org/en/](https://nodejs.org/en/) letöltése, és telepítése.
@@ -58,3 +61,4 @@ parancsal.
 
 ### Bemutató videó
 [![Rekurzív elemző](http://bmartin97.info/rekurzivelemzes.PNG)](https://www.youtube.com/watch?v=tz4gBU9FkII)
+=======
